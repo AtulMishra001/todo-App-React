@@ -8,9 +8,8 @@ function App() {
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
 
-  // Two input states now: Title and Description
   const [inputValue, setInputValue] = useState("");
-  const [inputDescription, setInputDescription] = useState(""); // <--- NEW
+  const [inputDescription, setInputDescription] = useState(""); 
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -23,13 +22,13 @@ function App() {
     const newTodo = {
       id: Date.now(),
       text: inputValue,
-      description: inputDescription, // <--- Saving the description
+      description: inputDescription,
       completed: false,
     };
 
     setTodos([...todos, newTodo]);
     setInputValue("");
-    setInputDescription(""); // <--- Clear description field
+    setInputDescription(""); 
   };
 
   const deleteTodo = (id) => {
@@ -45,7 +44,7 @@ function App() {
   };
 
   const editTodo = (id, newText, newDescription) => {
-    // <--- Updated to accept description
+    
     setTodos(
       todos.map((todo) =>
         todo.id === id
@@ -88,7 +87,7 @@ function App() {
             Add Task
           </button>
         </form>
-        
+
         <ToDoList
           todos={todos}
           deleteTodo={deleteTodo}
